@@ -7,26 +7,40 @@
     <style>
         html, body {
             margin: 0;
+            padding: 0;
             height: 100%;
+            width: 100%;
             background: black;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
         #flash-container {
             width: 800px;
             height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        ruffle-player {
+            width: 100% !important;
+            height: 100% !important;
         }
     </style>
 </head>
 <body>
-    <div id="flash-container"></div>
+    <div id="flash-container">
+        <!-- Ruffle player will be inserted here -->
+    </div>
     <script>
         window.RufflePlayer = window.RufflePlayer || {};
         window.addEventListener("load", () => {
             const ruffle = window.RufflePlayer.newest();
             const container = document.getElementById("flash-container");
             const player = ruffle.createPlayer();
+            player.style.width = "100%";
+            player.style.height = "100%";
             container.appendChild(player);
             player.load("tboi.swf");
         });
