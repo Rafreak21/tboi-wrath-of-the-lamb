@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>The Binding of Isaac: WotL</title>
-    <script src="https://unpkg.com/@ruffle-rs/ruffle@latest"></script>
+    <script defer src="https://unpkg.com/@ruffle-rs/ruffle@latest"></script>
     <style>
         html, body {
             margin: 0;
@@ -17,13 +17,17 @@
             align-items: center;
             overflow: hidden;
         }
+
         #flash-container {
             width: 640px;
             height: 480px;
             display: flex;
             justify-content: center;
             align-items: center;
+            will-change: transform;
+            backface-visibility: hidden;
         }
+
         ruffle-player {
             width: 640px;
             height: 480px;
@@ -32,18 +36,23 @@
     </style>
 </head>
 <body>
-    <div id="flash-container">
-        <!-- Ruffle player will be inserted here -->
-    </div>
+    <div id="flash-container"></div>
+
     <script>
         window.RufflePlayer = window.RufflePlayer || {};
-        window.addEventListener("load", () => {
+
+        function loadRufflePlayer() {
             const ruffle = window.RufflePlayer.newest();
             const container = document.getElementById("flash-container");
             const player = ruffle.createPlayer();
             container.appendChild(player);
             player.load("tboi.swf");
-        });
+        }
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadRufflePlayer);
+        } else {
+            setTimeout(loadRufflePlayer, 100);
+        }
     </script>
 </body>
 </html>
