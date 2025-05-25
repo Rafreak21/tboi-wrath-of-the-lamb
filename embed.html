@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>The Binding of Isaac: WotL</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Binding of Isaac: WotL</title>
 
-  <script>
-    window.RufflePlayer = {
-      config: {
-        rendering: {
-          preference: "webgl"
-        }
+<script>
+  window.RufflePlayer = {
+    config: {
+      rendering: {
+        preference: "webgl"
       }
-    };
-  </script>
-  <script async src="https://unpkg.com/@ruffle-rs/ruffle@latest"></script>
+    }
+  };
+</script>
 
-  <style>
-    html, body {
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-    ruffle-player {
-      width: 800px;
-      height: 600px;
-      will-change: transform;
-      transform: translateZ(0);
-    }
-  </style>
+<script defer src="https://unpkg.com/@ruffle-rs/ruffle@latest"></script>
+
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  ruffle-player {
+    width: 800px;
+    height: 600px;
+    will-change: transform;
+    transform: translateZ(0);
+    display: block;
+  }
+</style>
 </head>
 <body>
   <ruffle-player src="tboi.swf"></ruffle-player>
