@@ -39,8 +39,6 @@ ruffle-player {
             const ruffle = window.RufflePlayer.newest();
             const container = document.getElementById("flash-container");
             const player = ruffle.createPlayer();
-            player.style.width = "1px";
-            player.style.height = "1px";
             container.appendChild(player);
             player.load("tboi.swf");
         });
