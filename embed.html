@@ -6,7 +6,7 @@
     <script src="https://unpkg.com/@ruffle-rs/ruffle@latest"></script>
     <style>
         html, body {
-            margin: 400px;
+            margin: 0;
             padding: 0;
             height: 100%;
             width: 100%;
@@ -39,6 +39,8 @@ ruffle-player {
             const ruffle = window.RufflePlayer.newest();
             const container = document.getElementById("flash-container");
             const player = ruffle.createPlayer();
+            player.style.width = "100%";
+            player.style.height = "100%";
             container.appendChild(player);
             player.load("tboi.swf");
         });
