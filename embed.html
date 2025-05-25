@@ -1,50 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>The Binding of Isaac: WotL</title>
-    <script src="https://unpkg.com/@ruffle-rs/ruffle@latest"></script>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            background: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-        #flash-container {
-            width: 800px;
-            height: 600px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        ruffle-player {
-            width: 800px;
-            height: 6000px;
-            display: block;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The Binding of Isaac: WotL</title>
+  <script src="https://unpkg.com/@ruffle-rs/ruffle@latest" defer></script>
+  <style>
+    html,body{margin:0;height:100%;background:#000;display:flex;place-items:center;justify-content:center;overflow:hidden}
+    ruffle-player{width:800px;height:600px}
+  </style>
 </head>
 <body>
-    <div id="flash-container">
-        <!-- Ruffle player will be inserted here -->
-    </div>
-    <script>
-        window.RufflePlayer = window.RufflePlayer || {};
-        window.addEventListener("load", () => {
-            const ruffle = window.RufflePlayer.newest();
-            const container = document.getElementById("flash-container");
-            const player = ruffle.createPlayer();
-            container.appendChild(player);
-            player.load("tboi.swf");
-        });
-    </script>
+  <ruffle-player src="tboi.swf"></ruffle-player>
+  <script>
+    window.addEventListener("DOMContentLoaded",()=>{
+      const r=window.RufflePlayer.newest();
+      document.querySelectorAll("ruffle-player").forEach(el=>{
+        const p=r.createPlayer();
+        el.replaceWith(p);
+        p.load(el.src);
+      });
+    });
+  </script>
 </body>
 </html>
 
