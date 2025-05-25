@@ -9,7 +9,7 @@
   window.RufflePlayer = {
     config: {
       rendering: {
-        preference: "webgl"
+        preference: "webgl"  // forces GPU acceleration
       }
     }
   };
@@ -19,8 +19,7 @@
 
 <style>
   html, body {
-    margin: 0;
-    height: 100%;
+    margin: 0; padding: 0; height: 100%; width: 100%;
     background: black;
     display: flex;
     justify-content: center;
@@ -30,9 +29,9 @@
   ruffle-player {
     width: 800px;
     height: 600px;
+    display: block;
     will-change: transform;
     transform: translateZ(0);
-    display: block;
   }
 </style>
 </head>
