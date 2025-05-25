@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Binding of Isaac: WotL</title>
-
-<script>
-  window.RufflePlayer = {
-    config: {
-      rendering: {
-        preference: "webgl"  // forces GPU acceleration
-      }
-    }
-  };
-</script>
-
-<script defer src="https://unpkg.com/@ruffle-rs/ruffle@latest"></script>
-
-<style>
-  html, body {
-    margin: 0; padding: 0; height: 100%; width: 100%;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-  ruffle-player {
-    width: 800px;
-    height: 600px;
-    display: block;
-    will-change: transform;
-    transform: translateZ(0);
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>The Binding of Isaac: WotL</title>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle@latest"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        #flash-container {
+            width: 640px;
+            height: 480px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        ruffle-player {
+            width: 640px;
+            height: 480px;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-  <ruffle-player src="tboi.swf"></ruffle-player>
+    <div id="flash-container">
+        <!-- Ruffle player will be inserted here -->
+    </div>
+    <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("load", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const container = document.getElementById("flash-container");
+            const player = ruffle.createPlayer();
+            container.appendChild(player);
+            player.load("tboi.swf");
+        });
+    </script>
 </body>
 </html>
