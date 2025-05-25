@@ -17,16 +17,17 @@
             overflow: hidden;
         }
         #flash-container {
-  width: 800px;
-  height: 600px;
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-ruffle-player {
-  width: 800px !important;
-  height: 600px !important;
-}
+            width: 800px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        ruffle-player {
+            width: 800px !important;
+            height: 600px !important;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -39,8 +40,10 @@ ruffle-player {
             const ruffle = window.RufflePlayer.newest();
             const container = document.getElementById("flash-container");
             const player = ruffle.createPlayer();
-            player.style.width = "100%";
-            player.style.height = "100%";
+
+            // Optional: force block display in case Ruffle overrides it
+            player.style.display = "block";
+
             container.appendChild(player);
             player.load("tboi.swf");
         });
