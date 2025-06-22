@@ -42,6 +42,10 @@
             const player = ruffle.createPlayer();
             container.appendChild(player);
             player.load("tboi.swf");
+
+            if (navigator.storage && navigator.storage.persist) {
+                navigator.storage.persist();
+            }
         });
     </script>
 </body>
